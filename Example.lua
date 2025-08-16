@@ -1,4 +1,6 @@
-local WindUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Footagesus/WindUI/main/dist/main.lua"))()
+-- Not sure if this example works.
+
+local WindUI = require("./path/to/wind")
 
 WindUI:Localization({
     Enabled = true,
@@ -67,44 +69,6 @@ WindUI:Popup({
     }
 })
 
-
--- Add your service to get key 
---[[
-WindUI.Services.mysuperservicetogetkey = {
-    Name = "My Super Service",
-    Icon = "droplet", -- lucide or rbxassetid or raw link to img
-    
-    Args = { "ServiceId" }, --       <- \
-    --                                   |
-    -- important!!!!!!!!!!!!!!!          |
-    New = function(ServiceId) -- <------ | Args!!!!!!!!!!!!
-        
-        function validateKey(key) -- <--- this too important!!!
-            -- your function to validate key
-            -- see examples at src/utils/
-            
-            if not key then
-                return false, "Key is invalid!" 
-                
-            end
-            
-            return true, "Key is valid!" 
-        end
-        
-        function copyLink()
-            return setclipboard("link to key system service.")
-        end
-        
-        return {
-            -- ↓ do not change this!!1!1!1!1!1!!1!100
-            Verify = validateKey, -- <-----  THIS TOO IMPORTANT!!!!!
-            Copy = copyLink -- <-------- IMPORTANT!1!1!1!1!1!1!11!
-            -- ↑ do not change this!!1!1!1!1!1!!1!100
-        }
-    end
-}
-]]
-
 local Window = WindUI:CreateWindow({
     Title = "loc:WINDUI_EXAMPLE",
     Icon = "palette",
@@ -131,44 +95,6 @@ local Window = WindUI:CreateWindow({
         end
     },
     SideBarWidth = 200,
-    -- KeySystem = { -- <- ↓ remove this all, if you dont neet the key system
-    --     -- Key = { "1234", "5678" },  
-    --     Note = "Example Key System. With platoboost, etc.",
-    --     -- URL = "https://github.com/Footagesus/WindUI",
-    --     -- Thumbnail = {
-    --     --     Image = "rbxassetid://",
-    --     --     Title = "Thumbnail",
-    --     -- },
-    --     API = {
-    --         {   
-    --             -- Title = "Platoboost", -- optional 
-    --             -- Desc = "Click to copy.", -- optional
-    --             -- Icon = "rbxassetid://", -- optional
-                
-    --             Type = "platoboost", -- type: platoboost, ...
-    --             ServiceId = 5541, -- service id
-    --             Secret = "1eda3b70-aab4-4394-82e4-4e7f507ae198", -- platoboost secret
-    --         },
-    --         {   
-    --             -- Title = "Other service", -- optional 
-    --             -- Desc = nil, -- optional
-    --             -- Icon = "rbxassetid://", -- optional
-                
-    --             Type = "pandadevelopment", -- type: platoboost, ...
-    --             ServiceId = "windui", -- service id
-    --         },
-    --         {   
-    --             Type = "luarmor",
-    --             ScriptId = "...",
-    --             Discord = "https://discord.com/invite/...",
-    --         },
-    --         { -- Custom service ( ↑↑ look at line 73 ↑↑ )
-    --             Type = "mysuperservicetogetkey",
-    --             ServiceId = 42,
-    --         }
-    --     },
-    --     SaveKey = true,
-    -- },
 })
 
 Window:Tag({
